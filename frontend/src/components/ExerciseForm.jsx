@@ -12,6 +12,7 @@ const ExerciseForm = () =>{
         title: "",
         reps: "",
         load: "",
+        sets: ""
     })
 
     const [emptyFields ,setEmptyFields] = useState([])
@@ -63,6 +64,7 @@ const ExerciseForm = () =>{
                 title: "",
                 reps: "",
                 load: "",
+                sets: ""
             });
             setError(null);
             setEmptyFields([]);
@@ -101,6 +103,15 @@ const ExerciseForm = () =>{
                 placeholder = "20"
                 value = {exercise.load}
                 className = {emptyFields.includes('load')? 'error': ''}
+            />
+            <label>Sets:</label>
+            <input 
+                type = "number" 
+                onChange = {handleChange} 
+                name = "sets"
+                placeholder = "3"
+                value = {exercise.sets}
+                className = {emptyFields.includes('sets')? 'error': ''}
             />
             <button type = "submit">
                 Submit

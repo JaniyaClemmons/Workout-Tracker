@@ -68,12 +68,10 @@ const loginUser = async (req,res) => {
 
     //Add doc to db
     try{
-        //const exercise = await exercise.findById({id: req.body.params.id});     
+            
         const user = await User.login(email, password);
 
         //create token 
-
-
        const token = await createToken(user._id);
         //Send back a OK response and the email and new document 
         res.status(200).json({email, token}); 

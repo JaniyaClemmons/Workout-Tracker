@@ -52,7 +52,7 @@ const CalendarComp = ({ onDateChange }) => {
     }
 
     return (
-        <div>
+        <div >
             <Calendar
                 //onChange={onChange} 
                 value={date}

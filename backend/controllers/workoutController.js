@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 
 //get all workouts
 const getWorkouts = async (req, res) => {  
+    console.log(req.user);
     const user_id = req.user._id;
     //empty object for find all, sort by field in descending order (new first)
     const workouts = await Workout.find({user_id});

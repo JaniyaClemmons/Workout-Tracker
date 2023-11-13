@@ -17,6 +17,12 @@ export const exercisesReducer = (state, action) => {
                 of prev exercises with new one at the front */
                 exercises: [action.payload, ...state.exercises]
             }
+            case "UPDATE_EXERCISE":
+               return {
+                exercises: state.exercises.map((exercise) => 
+                    (exercise._id === (action.payload)._id )? exercise=action.payload: exercise ) 
+               }
+                                                         
         case "DELETE_EXERCISE":
             return{
                 //array without the deleted exercise 

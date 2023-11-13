@@ -1,11 +1,9 @@
 import { useState, useEffect } from "react";
 import { useWorkoutsContext } from "../hooks/useWorkoutsContext";
 import { useExercisesContext } from "../hooks/useExercisesContext";
-
 import DropDown from "../components/DropDown";
-
 import { useAuthContext } from "../hooks/useAuthContext";
-import ExerciseDetails from "./ExerciseDetails";
+
 
 const WorkoutForm = ({ date }) => {
 
@@ -19,7 +17,6 @@ const WorkoutForm = ({ date }) => {
 
     const [exercise_id, setExerciseIds] = useState(
         [])
-    //console.log(exercise_id.length)
 
     const [title, setTitle] = useState('');
     const workout =
@@ -44,12 +41,7 @@ const WorkoutForm = ({ date }) => {
 
             //Only do this if we get a response/ no error 
             if (response.ok) {
-
-                //setExercises(json); 
-                //json is full array of exercises
-                //sets the exercises in the global variable 
                 dispatch({ type: "SET_EXERCISES", payload: json })
-
             }
 
         }
@@ -57,16 +49,9 @@ const WorkoutForm = ({ date }) => {
         if (user) {
             fetchExercises()
         }
-        //we add user to the dependency array since we use it in here now 
     }, [dispatch, user]); //dispatch wont trigger this everytime but we have to add to depend. array 
 
 
-
-
-    /*function handleSubmit(event){
-        event.preventDefault(); 
-        console.log(event.target);
-    }*/
     const handleSubmit = async (event) => {
         event.preventDefault();
         if (!user) {
@@ -106,19 +91,12 @@ const WorkoutForm = ({ date }) => {
 
     }
     const handleClick = (e) => {
-
-        //ids
         setExerciseIds((prevValue) => {
             return (
                 [...prevValue, e.target.value]
             )
         })
-
-
     }
-
-
-
 
     return (
         <form className="create" onSubmit={handleSubmit}>
@@ -177,15 +155,9 @@ const WorkoutForm = ({ date }) => {
                     </div>)
 
                 })
-
                 }
-
-
-
-
-
             </div>
-            <button type="submit">
+            <button className="mt-2" type="submit">
                 Submit
             </button>
             {error && <div className="error">{error}</div>}

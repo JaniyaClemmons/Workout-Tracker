@@ -39,7 +39,7 @@ router.post('/', createExercise);
 router.delete('/:id', deleteExercise);
 
 //UPDATES a single Exercise
-router.patch('/:id', updateExercise);
+router.put('/:id', updateExercise);
 
 module.exports = router;
 

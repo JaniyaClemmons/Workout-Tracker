@@ -34,7 +34,7 @@ const getExercise = async (req, res) => {
 const createExercise = async (req, res) => {
     
     //access body with req.body
-    const {title, load, reps} = req.body; 
+    const {title, load, reps, sets} = req.body; 
 
     let emptyFields = [];
  
@@ -47,6 +47,9 @@ const createExercise = async (req, res) => {
     if(!reps){
         emptyFields.push('reps');
     }
+    if(!sets){
+        emptyFields.push('reps');
+    }
     if(emptyFields.length > 0){
         return res.status(400).json({error: 'Please fill in all all fields', emptyFields});
     }
@@ -57,7 +60,7 @@ const createExercise = async (req, res) => {
         //In the middleware we made sure each req has user and id
         const user_id = req.user._id;
         //Takes a obj and returns new document and the id or error
-        const exercise = await Exercise.create({title, load, reps, user_id});
+        const exercise = await Exercise.create({title, load, reps, sets, user_id});
 
         //Send back a OK response and the new document 
         res.status(200).json(exercise); 
@@ -101,7 +104,8 @@ const updateExercise = async (req, res) => {
         return res.status(404).json({error: "No such exercise"});
     }
     //returns document updated
-    const exercise = await Exercise.findOneAndUpdate({_id: id}, {...req.body});
+    await Exercise.findOneAndUpdate({_id: id}, {...req.body});
+    const exercise = await Exercise.findById(id);
 
     if(!exercise){
         //return so it stops

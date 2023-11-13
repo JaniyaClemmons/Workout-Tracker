@@ -1,15 +1,7 @@
-
-//date fns npm install date-fns to format dates
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import { useEffect, useState } from "react"
 import { useAuthContext } from "../hooks/useAuthContext"
-import ExerciseDetails from "../components/ExerciseDetails";
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext';
 
-/*
-const ExerciseDetails = (props) => {
-    const {title, reps, load, createdAt, _id} = props.Exercise; 
-*/
 
 const WorkoutDetails = ({workout} )=> {
     const {dispatch} = useWorkoutsContext();
@@ -39,14 +31,6 @@ const WorkoutDetails = ({workout} )=> {
                     [...oldExercises, json]
                 )
                 
-                
-                //Only do this if we get a response/ no error 
-                /*if(response.ok){
-                    //setExercises(json); 
-                    //json is full array of exercises
-                    //sets the exercises in the global variable 
-                    dispatch({type: "SET_EXERCISES", payload: json})
-                }*/
             })
             
         
@@ -78,19 +62,23 @@ const WorkoutDetails = ({workout} )=> {
             console.log("Workout Deleted" , json)
         }
     }
+    const dateToString = (date) => {
+        return (date.substr(3,3) + " " + date.substr(6,2))
+    }
 
   
 
     return (
         <div className="workout">
-            <h1>{title} <span className="material-symbols-outlined" onClick={handleClick}>delete</span></h1>
+            <h1 className="workout-title">{title} ({dateToString(date)}) <span className="material-symbols-outlined" onClick={handleClick}>delete</span></h1>
             
             {exercises && exercises.map((exercise) => {
                 return (<div key = {exercise._id} className = "exercise-details">
         
-                        <h4>{exercise.title}</h4>
+                        <h4>{exercise.title} </h4>
                         <p> <strong> Load (kg): </strong>{exercise.load} </p>
                         <p> <strong> Reps: </strong>{exercise.reps} </p>
+                        <p> <strong> Setss: </strong>{exercise.sets} </p>
                         </div>
                 )
               

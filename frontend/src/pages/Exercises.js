@@ -1,10 +1,11 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import { useExercisesContext } from "../hooks/useExercisesContext";
 //components 
 import ExerciseDetails from "../components/ExerciseDetails";
-import ExerciseForm from "../components/ExerciseForm";
+
 //Hook to get user to send token in header
 import { useAuthContext } from "../hooks/useAuthContext";
+import ExerciseForm from "../components/ExerciseForm";
 
 const Exercises = () => {
     /**Use Context Hook instead
@@ -13,7 +14,7 @@ const Exercises = () => {
     const {exercises, dispatch} = useExercisesContext()
 
     const {user} = useAuthContext()
-    
+  
     //empty array says run effect one time, not everytime component rendered
     //we shouldnt make the callback function async so we create a function inside it
     useEffect(() => {
@@ -45,18 +46,24 @@ const Exercises = () => {
         //we add user to the dependency array since we use it in here now 
     }, [dispatch, user]); //dispatch wont trigger this everytime but we have to add to depend. array 
    
+    
 
     return (
         <div className="exercise-page">
             <div className="exercises">
             
             {exercises && exercises.map((exercise) => {
-                return <ExerciseDetails key = {exercise._id} exercise = {exercise} />
-                //<p key = {exercise._id}> {exercise.title} </p>
+                return (                             
+
+                    <ExerciseDetails  key = {exercise._id} exercise = {exercise} dispatch ={dispatch}/>                                      
+                                      
+                )
+                
            })}
             </div>
-           
-               <ExerciseForm /> 
+           <div>
+            <ExerciseForm />
+           </div>
 
             
            

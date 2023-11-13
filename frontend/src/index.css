@@ -4,6 +4,7 @@
 /* calendar */
 .highlight {
   background-color: green !important;
+  color: black !important;
 }
 
 .black {
@@ -165,7 +166,9 @@ nav button {
   font-size: 1em;
   margin-left: 10px;
 }
-
+.edit {
+  margin-right: 40px; 
+}
 
 
 /* auth forms */
@@ -180,4 +183,13 @@ form.login {
 
 .react-calendar__tile time {
   color: blue;
+}
+
+.workout {
+  border-style: solid;
+  border-width: 1px;
+  padding-left: 5px;
+}
+.workout-title{
+  text-align: center;
 }

@@ -45,21 +45,22 @@ const Workouts = () => {
    
 
     return (
-        <div className="workout-page">
+        
             <div className="workouts">
             
             {workouts && workouts.map((workout) => {
+                
                 return <WorkoutDetails key = {workout._id} workout = {workout} />
                 //<p key = {exercise._id}> {exercise.title} </p>
            })}
             </div>
            
-               <WorkoutForm /> 
+               
 
             
            
 
-        </div>
+      
     )
 }
 
