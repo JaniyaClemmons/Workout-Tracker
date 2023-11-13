@@ -35,20 +35,21 @@ const createExercise = async (req, res) => {
     
     //access body with req.body
     const {title, load, reps, sets} = req.body; 
+    console.log(req.body);
 
     let emptyFields = [];
  
     if(!title){
         emptyFields.push('title');
     }
-    if(!load){
+    if(load === null){
         emptyFields.push('load');
     }
-    if(!reps){
+    if(reps === null){
         emptyFields.push('reps');
     }
-    if(!sets){
-        emptyFields.push('reps');
+    if(sets === null){
+        emptyFields.push('sets');
     }
     if(emptyFields.length > 0){
         return res.status(400).json({error: 'Please fill in all all fields', emptyFields});

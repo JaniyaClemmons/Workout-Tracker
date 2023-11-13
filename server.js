@@ -2,6 +2,7 @@
  * Application entry point: Connect to express server, db server
  */
 require('dotenv').config();
+const path = require("path");
 const express = require('express');
 const mongoose = require('mongoose');
 
@@ -14,6 +15,17 @@ const userRoutes = require('./routes/user');
 
 const workoutRoutes = require('./routes/workout');
 
+
+//Added for cyclic deployment - serve frontend (npm run build)
+app.use(express.static(path.join(__dirname, "./frontend/build")));
+app.get("/", function (_, res) {
+  res.sendFile(
+    path.join(__dirname, "./frontend/build/index.html"),
+    function (err) {
+      res.status(500).send(err);
+    }
+  );
+});
 
 //global middleware - LOGGER (called between every request between client and server)
 app.use((req, res, next) => {

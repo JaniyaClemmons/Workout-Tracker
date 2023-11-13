@@ -64,7 +64,7 @@ const Home = () => {
     return (
         <div className="home">
             <CalendarComp onDateChange={updateDate} />
-            {workout == null ?
+            {workout === null ?
                 <WorkoutForm date={trimedDate(date)} /> : <WorkoutDetails workout={workout} />}
 
 
