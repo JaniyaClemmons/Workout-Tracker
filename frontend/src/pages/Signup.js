@@ -10,11 +10,10 @@ const [user, setUser] = useState({
 const {signup, error, isLoading } = useSignup()
 
 const [emptyFields ,setEmptyFields] = useState([])
-//const [error, setError] = useState(null);
+
 
 
 const handleChange = (event) => {
-    //console.log(event.target.value);
     const {name, value} = event.target;
     setUser(prevValue => {
         return ({...prevValue, [name]: value })
@@ -41,7 +40,7 @@ return (
                 value = {user.email}
                 className = {emptyFields.includes('email')? 'error': ''}
             />
-        <label> password:</label>
+        <label> Password:</label>
             <input 
                 type = "password" onChange = {handleChange} 
                 name = "password"

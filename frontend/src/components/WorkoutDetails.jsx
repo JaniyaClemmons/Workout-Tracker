@@ -78,7 +78,8 @@ const WorkoutDetails = ({workout} )=> {
                         <h4>{exercise.title} </h4>
                         <p> <strong> Load (kg): </strong>{exercise.load} </p>
                         <p> <strong> Reps: </strong>{exercise.reps} </p>
-                        <p> <strong> Setss: </strong>{exercise.sets} </p>
+                        <p> <strong> Sets: </strong>{exercise.sets} </p>
+        
                         </div>
                 )
               
