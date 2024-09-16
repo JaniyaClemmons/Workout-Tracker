@@ -114,9 +114,6 @@ If you would like to contribute to this project:
 
 5. Create a pull request.
 
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
