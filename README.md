@@ -39,19 +39,13 @@ cd Workout-Tracker
 
 ### Backend Setup
 
-1. Navigate to the backend directory:
-
-    ```bash
-    cd backend
-    ```
-
-2. Install the dependencies:
+1. Install the dependencies:
 
     ```bash
     npm install
     ```
 
-3. Create a `.env` file in the `backend` directory and add the following environment variables:
+3. Create a `.env` file and add the following environment variables:
 
     ```env
     MONGODB_URI=your_mongodb_connection_string
